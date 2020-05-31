@@ -21,40 +21,54 @@ def computerChoice():
 
     return choice
 
-def compare(p, c):
+def compare(p, c, ps, cs):
     print()
     lost = 'You lose, computer chose {}. Play again?\n'
     won = 'You won, computer chose {}. Play again?\n'
 
     if p == c:
         print('Tie. Play again?\n')
+        game(ps, cs)
     elif p == 'rock' and c == 'paper':
         print(lost.format(c))
-        game()
+        cs += 1
+        score(ps, cs)
+        game(ps, cs)
     elif p == 'rock' and c == 'scissors':
         print(won.format(c))
-        game()
+        ps += 1
+        score(ps, cs)
+        game(ps, cs)
     elif p == 'paper' and c == 'rock':
         print(won.format(c))
-        game()
+        ps += 1
+        score(ps, cs)
+        game(ps, cs)
     elif p == 'paper' and c == 'scissors':
         print(lost.format(c))
-        game()
+        cs += 1
+        score(ps, cs)
+        game(ps, cs)
     elif p == 'scissors' and c == 'rock':
         print(lost.format(c))
-        game()
+        cs += 1
+        score(ps, cs)
+        game(ps, cs)
     elif p == 'scissors' and c == 'paper':
         print(won.format(c))
-        game()
+        ps += 1
+        score(ps, cs)
+        game(ps, cs)
     else: 
         print("An error has occured try again\n")
-        game()
-    
+        game(ps,cs)
 
-def game():
+def score(pscore, cscore):
+    print(f'Score: \n Player: {pscore} \n Computer: {cscore} \n')  
+
+def game(ps, cs):
     player = playerChoice()
     computer = computerChoice()
-    compare(player, computer)
-    game()
+    compare(player, computer, ps, cs)
 
-game()
+game(0,0)
