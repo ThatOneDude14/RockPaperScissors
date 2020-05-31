@@ -1,12 +1,12 @@
 #!/bin/bash python3
-import random
+import random, sys
 
 def playerChoice():
+    print('Enter "X" to exit')
     choice = input("Choose Rock, Paper, or Scissors: ")
     choice.lower()
-    # if choice != 'rock' or choice != 'paper' or choice != 'scissors':
-    #     print('Incorrect choice, try again\n')
-        # playerChoice()
+    if choice == 'x':
+        sys.exit()
     
     return choice
 
@@ -19,9 +19,10 @@ def computerChoice():
     else:
         choice = 'scissors'
 
-    return 'rock'
+    return choice
 
 def compare(p, c):
+    print()
     lost = 'You lose, computer chose {}. Play again?\n'
     won = 'You won, computer chose {}. Play again?\n'
 
